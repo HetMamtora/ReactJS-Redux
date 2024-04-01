@@ -17,6 +17,9 @@ const App = () => {
       <button onClick={incr}>+</button>
       <br />
       <button onClick={decr}>-</button>
+
+      <br /><br />
+      <h1>Below eg is using Redux Toolkit</h1>
     </div>
   )
 }
