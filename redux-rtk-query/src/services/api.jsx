@@ -6,8 +6,28 @@ export const api = createApi({
     endpoints:(builder) => ({
         getApiByName: builder.query({
             query:() => '/posts',
-        })
+        }),
+        createPost: builder.mutation({
+            query:(newPost)=> ({
+                url:'/posts',
+                method: 'POST',
+                body:newPost,
+            })
+        }),
+        deletePost: builder.mutation({
+            query:(id) => ({
+                url: `/posts/${id}`,
+                method: 'DELETE',
+            })
+        }),
+        updatePost: builder.mutation({
+            query:({id, ...updatedPost}) => ({
+                url: `/posts/${id}`,
+                method: 'PUT',
+                body: updatedPost,
+            })
+        }),
     })
 })
 
-export const {useGetApiByNameQuery} = api;
+export const {useGetApiByNameQuery, useCreatePostMutation, useDeletePostMutation, useUpdatePostMutation} = api;
